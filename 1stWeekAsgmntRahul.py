@@ -9,7 +9,7 @@ count = 0
 user = 0
 comp = 0
 dicts = {}
-while count <= 10 :
+while count < 10 :
 
     print("Enter choice \n 1. Rock \n 2. paper \n 3. scissor \n")
 
@@ -87,15 +87,21 @@ while count <= 10 :
 
 
 
+print("\n")
+print("Points by user : " + str(user))
+print("Points by computer : " + str(comp))
+
+
 if user > comp:
     print("User wins overall")
+
 elif comp > user:
     print("computer wins overall ")
+
 else:
     print("game ended TIE")
 
-
 m = int(input("Enter the round for which you need the information :"))
-print(dicts[m])
+print(dicts[m-1])
 
 print("\nThanks for playing")
