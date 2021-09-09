@@ -66,11 +66,11 @@ while count < 10 :
 
 
     if result == choice_name:
-        print("<== User wins ==>")
+        print(" User wins ")
         a = "user"
         user = user + 1
     else:
-        print("<== Computer wins ==>")
+        print(" Computer wins ")
         a = "computer"
         comp = comp + 1
 
