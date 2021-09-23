@@ -3,8 +3,8 @@ from random import randrange
 class Pet():
     boredom_decrement = 4
     hunger_decrement = 4
-    boredom_threshold = 3
-    hunger_threshold = 3
+    boredom_threshold = 10
+    hunger_threshold = 10
     sounds = ['Meoww']
     def __init__(self,name):
         self.name = name
