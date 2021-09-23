@@ -1,16 +1,16 @@
 from random import randrange
 
 class Pet():
-    boredom_decrement = 2
-    hunger_decrement = 2
-    boredom_threshold = 10
-    hunger_threshold = 10
-    sounds = ['Mrrp']
-    def __init__(self, name = "Kitty"):
+    boredom_decrement = 4
+    hunger_decrement = 4
+    boredom_threshold = 3
+    hunger_threshold = 3
+    sounds = ['Meoww']
+    def __init__(self,name):
         self.name = name
         self.hunger = randrange(self.hunger_threshold)
         self.boredom = randrange(self.boredom_threshold)
-        self.sounds = self.sounds[:]  # copy the class attribute, so that when we make changes to it, we won't affect the other Pets in the class
+        self.sounds = self.sounds[:]
 
     def clock_tick(self):
         self.boredom += 1
@@ -48,24 +48,44 @@ class Pet():
         self.boredom = max(0, self.boredom - self.boredom_decrement)
 
 
+
+# p1 = Pet()
+#print(p1)
+# def feed():
+#     p1.feed()
+#     print(p1)
+
 #
-# print()
-p1 = Pet()
-# print(p1)
+# def greet():
+#     p1.hi()
+#     print(p1)
+#
+# def teach():
+#     word = input("enter the word u want to teach")
+#     p1.teach(word)
+#     print(p1)
+
 names = ["charlie","sniper","hulk"]
+
 i = True
 while i:
+        print(f"Available pets{names}")
         a = int(input(("Choose action 1. Adopt a pet 2. interact with the pets :")))
         if a == 1 :
             name = input("enter the name of the pet :")
             p1 = Pet(name)
             names.append(name)
             print(p1)
+
         else:
+
+            name = input("Choose the pet ")
             action  = int(input("1.feed 2.teach 3.greet"))
+            p1 = Pet(name)
             if action==1 :
                 p1.feed()
                 print(p1)
+
             elif action==2:
                 word = input("enter the word u want to teach")
                 p1.teach(word)
@@ -78,3 +98,18 @@ while i:
         c= input("do you want to continue(y/n) ")
         if c == 'n' :
             i = False
+
+
+
+
+
+
+
+
+#
+# p1.feed()
+# p1.hi()
+# p1.teach("Boo")
+# for i in range(10):
+#     p1.hi()
+# print(p1)
