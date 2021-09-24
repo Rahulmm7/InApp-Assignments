@@ -1,20 +1,22 @@
+import random
 from random import randrange
 
 class Pet():
     boredom_decrement = 4
     hunger_decrement = 4
-    boredom_threshold = 10
-    hunger_threshold = 10
-    sounds = ['Meoww']
+    boredom_threshold = 3
+    hunger_threshold = 3
+
+    sounds = {1:[],2:[],3:[],4:[],5:[],6:[],7:[]}
     def __init__(self,name):
         self.name = name
         self.hunger = randrange(self.hunger_threshold)
         self.boredom = randrange(self.boredom_threshold)
-        self.sounds = self.sounds[:]
+
 
     def clock_tick(self):
-        self.boredom += 1
-        self.hunger += 1
+        self.boredom += 3
+        self.hunger += 3
 
     def mood(self):
         if self.hunger <= self.hunger_threshold and self.boredom <= self.boredom_threshold:
@@ -25,52 +27,40 @@ class Pet():
             return "bored"
 
     def __str__(self):
-        state = "     I'm " + self.name + ". "
-        state += " I feel " + self.mood() + ". "
-        # state += "Hunger {} Boredom {} Words {}".format(self.hunger, self.boredom, self.sounds)
-        return state
+        return f' I am {self.name} I feel {self.mood()}'
 
     def hi(self):
-        print(self.sounds[randrange(len(self.sounds))])
+        if (self.sounds[petNum]) == []:
+            print("\nHello! Teach me a word!")
+        else:
+            print(f"\nHi! My favorite word is {random.choice(self.sounds[petNum])}")
         self.reduce_boredom()
+        return random.choice(self.sounds)
+
 
     def teach(self, word):
-        self.sounds.append(word)
+        self.sounds[petNum].append(word)
+        print(self.sounds[petNum])
         self.reduce_boredom()
 
     def feed(self):
         self.reduce_hunger()
 
     def reduce_hunger(self):
-        self.hunger = max(0, self.hunger - self.hunger_decrement)
+        self.hunger -= self.hunger_decrement
 
     def reduce_boredom(self):
-        self.boredom = max(0, self.boredom - self.boredom_decrement)
+        self.boredom -=  self.boredom_decrement
 
 
-
-# p1 = Pet()
-#print(p1)
-# def feed():
-#     p1.feed()
-#     print(p1)
-
-#
-# def greet():
-#     p1.hi()
-#     print(p1)
-#
-# def teach():
-#     word = input("enter the word u want to teach")
-#     p1.teach(word)
-#     print(p1)
 
 names = ["charlie","sniper","hulk"]
-
+print("Welcome ")
 i = True
 while i:
         print(f"Available pets{names}")
         a = int(input(("Choose action 1. Adopt a pet 2. interact with the pets :")))
+        #
         if a == 1 :
             name = input("enter the name of the pet :")
             p1 = Pet(name)
@@ -78,38 +68,30 @@ while i:
             print(p1)
 
         else:
-
-            name = input("Choose the pet ")
+            petNum = int(input(f"Enter the pet number to interact with the pet {names}"))
+            name = names[petNum - 1]
             action  = int(input("1.feed 2.teach 3.greet"))
             p1 = Pet(name)
+
             if action==1 :
+                print(f"hello, My name is {name}")
                 p1.feed()
                 print(p1)
 
             elif action==2:
+                print(f"hello, My name is {name}")
                 word = input("enter the word u want to teach")
                 p1.teach(word)
                 print(p1)
 
-            else:
+            elif action==3:
+                print(f"hello, My name is {name}")
                 p1.hi()
                 print(p1)
+            else :
+                print("Invalid choice")
         p1.clock_tick()
         c= input("do you want to continue(y/n) ")
         if c == 'n' :
             i = False
 
-
-
-
-
-
-
-
-#
-# p1.feed()
-# p1.hi()
-# p1.teach("Boo")
-# for i in range(10):
-#     p1.hi()
-# print(p1)
