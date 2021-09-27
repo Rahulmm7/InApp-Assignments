@@ -24,6 +24,8 @@ manyCars = [
 cursor.executemany("INSERT INTO Cars VALUES (?,?) ",manyCars)
 
 cursor.execute(" select * from Cars ")
-print(cursor.fetchall())
+items = cursor.fetchall()
+for item in items :
+    print(item[0]+"\t "+item[1])
 conn.commit()
 conn.close()
