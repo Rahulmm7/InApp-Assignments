@@ -30,10 +30,10 @@ cursor.execute(""" CREATE TABLE Departments (
                     Department_name CHAR NOT NULL,
                     FOREIGN KEY (Department_id) REFERENCES Employee(Department_id) ) """)
 dataDepartment = [(221,'IT'),
-                (221,'Block chain'),
-                (222,'AI'),
-                (223,'Gaming'),
-                (221,'Web Dev'),
+                (222,'Block chain'),
+                (223,'AI'),
+                (224,'Gaming'),
+                (225,'Web Dev'),
                   ]
 cursor.executemany("INSERT INTO Departments VALUES (?,?)",dataDepartment)
 
@@ -44,12 +44,13 @@ for i in table:
     print(f"{i[0]} \t\t\t {i[1]}")
 
 def empDept(id):
-    cursor.execute("SELECT * FROM Employee WHERE Department_id = '{}'".format(id))
+    cursor.execute("""SELECT DISTINCT  * FROM 
+    Employee INNER JOIN Departments 
+    WHERE Departments.Department_id = '{}'
+     and Employee.Department_id=Departments.Department_id""".format(id))
     details = cursor.fetchall()
     for i in details:
         print(i)
-
-
 
 id = int(input("Enetr the Department id of employee to obatin details :"))
 empDept(id)
