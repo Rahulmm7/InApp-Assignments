@@ -19,9 +19,9 @@ def q3b():
     con = connection()
     cursor = con.cursor()
     cursor.execute(" PRAGMA table_info(Matches)")
-    # cursor.execute("""
-    #     SELECT  FTR FROM Matches WHERE  season = '2016'
-    #      ORDER BY FTR desc""")
+    cursor.execute("""
+        SELECT  HomeTeam, count(FTR) FROM Matches WHERE  season = '2016' and FTR = 'H' GROUP BY HomeTeam
+         ORDER BY count(FTR) desc""")
     result = cursor.fetchall()
     for i in result:
         print(i)
