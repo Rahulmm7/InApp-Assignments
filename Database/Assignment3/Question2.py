@@ -35,12 +35,12 @@ def q2c():
 def q2d():
     con = connection()
     cursor = con.cursor()
-    cursor.execute("pragma Table_info(Teams)")
-    #cursor.execute("select OverallMarketValueHome from Teams")
+    cursor.execute("select  SUM(KaderHome) from Teams WHERE season = 2014")
     result = cursor.fetchall()
-    print(result)
+    print(result[0])
     con.commit()
     con.close()
+
 
 
 def q2e():
