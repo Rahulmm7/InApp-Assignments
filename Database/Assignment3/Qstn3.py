@@ -37,6 +37,20 @@ def q3c():
         print(result[i])
     con.commit()
     con.close()
+    
+def q3d():
+    con = connection()
+    cursor = con.cursor()
+    cursor.execute("""
+        SELECT  DISTINCT *    
+        FROM Teams_in_Matches INNER JOIN Unique_Teams  
+        Where Teams_in_Matches.Unique_Team_ID = Unique_Teams.Unique_Team_ID """)
+    result = cursor.fetchall()
+    for i in result:
+        print(i)
+    con.commit()
+    con.close()
+
 
     
 q3a()
