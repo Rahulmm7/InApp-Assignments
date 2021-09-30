@@ -35,13 +35,27 @@ def q2c():
 def q2d():
     con = connection()
     cursor = con.cursor()
-    cursor.execute()
-    cursor.execute("select * from Teams")
+    cursor.execute("pragma Table_info(Teams)")
+    #cursor.execute("select OverallMarketValueHome from Teams")
     result = cursor.fetchall()
     print(result)
+    con.commit()
+    con.close()
+
+
+def q2e():
+    con = connection()
+    cursor = con.cursor()
+    cursor.execute("pragma Table_info(Matches)")
+    cursor.execute("Select AVG(FTHG) FROM Matches Where HomeTeam = 'Man United' ")
+    result = cursor.fetchall()
+    print(result)
+    con.commit()
+    con.close()
     
 q2a()
 q2b()
 q2c()
 q2d()
+q2e()
 
