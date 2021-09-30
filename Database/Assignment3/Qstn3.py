@@ -1,3 +1,4 @@
+
 import sqlite3
 
 def connection():
@@ -14,4 +15,31 @@ def q3a():
     for i in result:
         print(i)
 
+def q3b():
+    con = connection()
+    cursor = con.cursor()
+    cursor.execute(" PRAGMA table_info(Matches)")
+    # cursor.execute("""
+    #     SELECT  FTR FROM Matches WHERE  season = '2016'
+    #      ORDER BY FTR desc""")
+    result = cursor.fetchall()
+    for i in result:
+        print(i)
+    con.commit()
+    con.close()
+
+def q3c():
+    con = connection()
+    cursor = con.cursor()
+    cursor.execute("SELECT DISTINCT *  FROM Unique_Teams  ")
+    result = cursor.fetchall()
+    for i in range(10):
+        print(result[i])
+    con.commit()
+    con.close()
+
+    
 q3a()
+q3b()
+q3c()
+
