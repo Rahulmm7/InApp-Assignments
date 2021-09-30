@@ -50,6 +50,19 @@ def q3d():
         print(i)
     con.commit()
     con.close()
+    
+  def q3e():
+    con = connection()
+    cursor = con.cursor()
+    cursor.execute("""
+            SELECT  DISTINCT *    
+            FROM Unique_Teams  JOIN Teams  
+              LIMIT 10""")
+    result = cursor.fetchall()
+    for i in result:
+        print(i)
+    con.commit()
+    con.close()
 
 
     
