@@ -62,8 +62,8 @@ def createDog():
 def createCat():
     CatName = input("Enter Cat Name")
     CatSpecies = input("Enter the species")
-    dict[1] = Cat(CatName, CatSpecies)
-
+    c = Cat(CatName, CatSpecies)
+    dict[1] = c 
 
 
 for i in range(5):
